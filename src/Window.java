@@ -10,8 +10,11 @@ public class Window extends JFrame {
         JPanel panels = new JPanel();
         panels.setLayout(new BorderLayout());
         panels.add(new Navbar(), BorderLayout.PAGE_START);
-        panels.add(new Game(), BorderLayout.CENTER);
-        panels.add(new Keyboard(), BorderLayout.PAGE_END);
+
+        Game game = new Game();
+        panels.add(game, BorderLayout.CENTER);
+        panels.add(new VirtualKeyboard(game), BorderLayout.PAGE_END);
+
         this.add(panels);
         this.pack();
 
