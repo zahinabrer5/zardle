@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class Window extends JFrame {
     public Window() {
@@ -6,8 +7,12 @@ public class Window extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 
-        Game game = new Game();
-        this.add(game);
+        JPanel panels = new JPanel();
+        panels.setLayout(new BorderLayout());
+        panels.add(new Navbar(), BorderLayout.PAGE_START);
+        panels.add(new Game(), BorderLayout.CENTER);
+        panels.add(new Keyboard(), BorderLayout.PAGE_END);
+        this.add(panels);
         this.pack();
 
         this.setLocationRelativeTo(null);
