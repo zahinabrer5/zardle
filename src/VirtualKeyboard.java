@@ -8,7 +8,6 @@ public class VirtualKeyboard extends JPanel {
     public static final int height = 175;
     private final int row = 4;
     private final int col = 7;
-    public static final Font font = new Font("SansSerif", Font.BOLD, 20);
     public static final List<JButton> buttons = new ArrayList<>();
     private final Game game;
 
@@ -33,7 +32,7 @@ public class VirtualKeyboard extends JPanel {
     private void keyboardBtnFactory(String text, boolean special) {
         JButton btn = new JButton(text);
         btn.setPreferredSize(new Dimension(special ? 70 : 50, 50));
-        btn.setFont(font);
+        btn.setFont(new WFont(20));
         btn.setForeground(Color.WHITE);
         btn.setBackground(new Color(0x818384));
         btn.setFocusable(false);
