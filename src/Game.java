@@ -29,6 +29,10 @@ public class Game extends JPanel implements ActionListener, KeyListener {
         this.addKeyListener(this);
 
         System.out.println(word);
+
+        for (int i = 0; i < 6; i++)
+            for (int j = 0; j < 5; j++)
+                letters[i][j] = ' ';
     }
 
     // https://stackoverflow.com/questions/5868369/how-can-i-read-a-large-text-file-line-by-line-using-java

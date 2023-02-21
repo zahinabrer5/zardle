@@ -7,12 +7,14 @@
     <list default="true" id="ee31fe83-e93d-4352-b847-68af20dfc69c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VirtualKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/VirtualKeyboard.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,6 +29,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectId" id="2LTZAXngbqj88DiEUHQ1X7QS8KY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -40,7 +45,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/zahin/IdeaProjects/Wardle/resources",
+    "last_opened_file_path": "/home/zahin/IdeaProjects/Wardle",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -49,7 +54,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -93,7 +98,11 @@
       <workItem from="1676522121262" duration="2248000" />
       <workItem from="1676526718111" duration="156000" />
       <workItem from="1676526934363" duration="1284000" />
-      <workItem from="1676737704499" duration="11316000" />
+      <workItem from="1676737704499" duration="11431000" />
+      <workItem from="1676854806346" duration="1107000" />
+      <workItem from="1676931884860" duration="804000" />
+      <workItem from="1676958368773" duration="436000" />
+      <workItem from="1676982252331" duration="472000" />
     </task>
     <servers />
   </component>
