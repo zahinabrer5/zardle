@@ -18,6 +18,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     private final List<String> used = new ArrayList<>();
     private final Random rand = new Random();
     private String word = getRandomWord(words, used, rand);
+    private boolean disabled = false;
 
     public Game() {
         this.setBackground(new Color(0x121213));
@@ -30,9 +31,12 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
         System.out.println(word);
 
-        for (int i = 0; i < 6; i++)
-            for (int j = 0; j < 5; j++)
+        // initially fill letters grid with spaces to avoid tofu
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 5; j++) {
                 letters[i][j] = ' ';
+            }
+        }
     }
 
     // https://stackoverflow.com/questions/5868369/how-can-i-read-a-large-text-file-line-by-line-using-java
@@ -59,6 +63,9 @@ public class Game extends JPanel implements ActionListener, KeyListener {
      * {@code null} if {@code used} contains all the elements of {@code words}
      */
     private String getRandomWord(List<String> words, List<String> used, Random rand) {
+        // words.size() will probably never equal used.size()
+        // if it does, that means the user played thousands of times
+        // without closing the window, and that's absurd if done by hand
         if (words.size() == used.size()) {
             return null;
         }
@@ -145,6 +152,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (disabled) return;
         for (int i = 0; i < 26; i++) {
             if (e.getSource().equals(VirtualKeyboard.buttons.get(i)) && col < 5) {
                 char letter = VirtualKeyboard.buttons.get(i).getText().charAt(0);
@@ -167,6 +175,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if (disabled) return;
         char c = e.getKeyChar();
         if (Character.isLetter(c) && col < 5) {
             letters[row][col++] = Character.toUpperCase(c);
@@ -190,17 +199,32 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             alert = "Write more letters!!!!";
             return;
         }
+        String enteredWord = new String(letters[row]).toLowerCase();
+        if (!words.contains(enteredWord)) {
+            alert = "Word not in list!!!!";
+            return;
+        }
         for (int i = 0; i < 5; i++) {
             char letter = Character.toLowerCase(letters[row][i]);
             colours[row][i] = 1;
             if (word.indexOf(letter) > -1) colours[row][i] = 2;
             if (word.charAt(i) == letter) colours[row][i] = 3;
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            paintImmediately(0, 0, width, height);
         }
-        col = 0;
-        if (word.toUpperCase().equals(new String(letters[row]))) {
-            alert = "You won!";
+        if (word.equals(enteredWord)) {
+            new PlayAgainWindow(true);
+            disabled = true;
             return;
         }
-        if (++row == 6) alert = "You lost!";
+        col = 0;
+        if (++row == 6) {
+            new PlayAgainWindow(false);
+            disabled = true;
+        }
     }
 }
