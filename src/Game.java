@@ -209,12 +209,6 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             colours[row][i] = 1;
             if (word.indexOf(letter) > -1) colours[row][i] = 2;
             if (word.charAt(i) == letter) colours[row][i] = 3;
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            paintImmediately(0, 0, width, height);
         }
         if (word.equals(enteredWord)) {
             new PlayAgainWindow(true);

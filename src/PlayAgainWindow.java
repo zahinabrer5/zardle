@@ -1,25 +1,56 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class PlayAgainWindow extends JFrame {
+public class PlayAgainWindow extends JFrame implements ActionListener {
+    private JButton playAgainBtn;
+    private JButton exitBtn;
+
     public PlayAgainWindow(boolean won) {
-        this.setIconImage(new ImageIcon(getClass().getResource("logo.png")).getImage());
+        this.setTitle("Play Again?");
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.setResizable(false);
 
         String msg = (won ? "Congratulations! You won!!!!" :
                 "You lost!!!! :((((") + " Play again?";
+        JLabel msgLabel = new JLabel(msg);
 
-        int optionChosen = JOptionPane.showOptionDialog(this,
-                msg,
-                "Play Again?",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                null,
-                null);
-        System.out.println(optionChosen);
+        this.playAgainBtn = new JButton("Play Again! :D");
+        playAgainBtn.addActionListener(this);
+        this.exitBtn = new JButton("Exit >:C");
+        exitBtn.addActionListener(this);
+
+        JPanel btnPanel = new JPanel();
+        btnPanel.add(playAgainBtn);
+        btnPanel.add(exitBtn);
+
+        JPanel mainPanel = new JPanel();
+        mainPanel.setPreferredSize(new Dimension(300, 150));
+        mainPanel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        mainPanel.add(msgLabel, gbc);
+        mainPanel.add(btnPanel, gbc);
+        this.getRootPane().setDefaultButton(playAgainBtn);
+
+        this.add(mainPanel);
+        this.pack();
+
+        this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("logo.png")).getImage());
+        this.setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(playAgainBtn)) {
+            System.out.println("Play Again!!!!");
+            this.dispose();
+        }
+        if (e.getSource().equals(exitBtn)) {
+            System.out.println("Exit :(((((");
+            System.exit(0);
+        }
     }
 }
