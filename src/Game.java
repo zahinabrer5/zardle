@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -29,9 +30,12 @@ public class Game extends JPanel implements ActionListener, KeyListener {
         this.requestFocus();
         this.addKeyListener(this);
 
-        System.out.println(word);
+        clearLetterGrid();
 
-        // initially fill letters grid with spaces to avoid tofu
+        System.out.println(word);
+    }
+
+    private void clearLetterGrid() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
                 letters[i][j] = ' ';
@@ -211,14 +215,30 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             if (word.charAt(i) == letter) colours[row][i] = 3;
         }
         if (word.equals(enteredWord)) {
-            new PlayAgainWindow(true);
+            new PlayAgainWindow(this, true);
             disabled = true;
             return;
         }
         col = 0;
         if (++row == 6) {
-            new PlayAgainWindow(false);
+            new PlayAgainWindow(this, false);
             disabled = true;
         }
+    }
+
+    public void reset() {
+        clearLetterGrid();
+
+        for (int i = 0; i < 6; i++)
+            Arrays.fill(colours[i], 0);
+
+        row = 0;
+        col = 0;
+        alert = "";
+        word = getRandomWord(words, used, rand);
+        disabled = false;
+        repaint();
+
+        System.out.println(word);
     }
 }
