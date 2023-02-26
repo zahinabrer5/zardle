@@ -70,8 +70,11 @@ public class Navbar extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(helpBtn)) {
-            if (helpWindow == null || !helpWindow.isDisplayable()) {
+            if (helpWindow == null) {
                 helpWindow = new HelpWindow();
+            }
+            else if (!helpWindow.isVisible()) {
+                helpWindow.setVisible(true);
             }
         }
     }

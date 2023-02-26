@@ -49,6 +49,7 @@ public class PlayAgainWindow extends JFrame implements ActionListener {
         if (e.getSource().equals(playAgainBtn)) {
             System.out.println("Play Again!!!!");
             game.reset();
+            this.setVisible(false);
             this.dispose();
         }
         else if (e.getSource().equals(exitBtn)) {

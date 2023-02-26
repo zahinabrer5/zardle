@@ -14,6 +14,9 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
+        // enable OpenGL on Linux and Windows
+        System.setProperty("sun.java2d.opengl", "true");
+
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
@@ -21,6 +24,5 @@ public class Main {
         }
 
         new Window();
-//        new HelpWindow();
     }
 }

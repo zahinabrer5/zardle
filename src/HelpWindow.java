@@ -8,7 +8,7 @@ public class HelpWindow extends JFrame {
 
     public HelpWindow() {
         this.setTitle("How to Play Wardle");
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
 
         JEditorPane jep = new JEditorPane();

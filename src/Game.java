@@ -20,9 +20,15 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     private final Random rand = new Random();
     private String word = getRandomWord(words, used, rand);
     private boolean disabled = false;
+    public static final List<Color> themeColours = new ArrayList<>();
 
     public Game() {
-        this.setBackground(new Color(0x121213));
+        themeColours.add(new Color(0x121213)); // background colour
+        themeColours.add(new Color(0x3A3A3C)); // incorrect tile colour
+        themeColours.add(new Color(0xB59F3B)); // correct but misplaced tile colour
+        themeColours.add(new Color(0x538D4E)); // correct tile colour
+
+        this.setBackground(themeColours.get(0));
         this.setPreferredSize(new Dimension(width, height));
         this.setDoubleBuffered(true); // reduced lag on animations in JPanel
         this.setLayout(new GridBagLayout());
@@ -108,12 +114,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             for (int j = 0; j < 5; j++) {
                 int x = 150+j*60;
                 int y = 60+i*60;
-                Color c = switch (colours[i][j]) {
-                    case 1 -> new Color(0x3A3A3C);
-                    case 2 -> new Color(0xB59F3B);
-                    case 3 -> new Color(0x538D4E);
-                    default -> new Color(0x121213);
-                };
+                Color c = themeColours.get(colours[i][j]);
                 g2.setColor(c);
                 g2.fillRect(x, y, 60, 60);
                 g2.setColor(Color.white);
@@ -210,9 +211,22 @@ public class Game extends JPanel implements ActionListener, KeyListener {
         }
         for (int i = 0; i < 5; i++) {
             char letter = Character.toLowerCase(letters[row][i]);
-            colours[row][i] = 1;
-            if (word.indexOf(letter) > -1) colours[row][i] = 2;
-            if (word.charAt(i) == letter) colours[row][i] = 3;
+            JButton btn = VirtualKeyboard.buttons.get(letter-'a');
+            if (word.indexOf(letter) == -1) {
+                colours[row][i] = 1;
+                if (themeColours.indexOf(btn.getBackground()) < 1)
+                    btn.setBackground(themeColours.get(1));
+            }
+            if (word.indexOf(letter) > -1) {
+                colours[row][i] = 2;
+                if (themeColours.indexOf(btn.getBackground()) < 2)
+                    btn.setBackground(themeColours.get(2));
+            }
+            if (word.charAt(i) == letter) {
+                colours[row][i] = 3;
+                if (themeColours.indexOf(btn.getBackground()) < 3)
+                    btn.setBackground(themeColours.get(3));
+            }
         }
         if (word.equals(enteredWord)) {
             new PlayAgainWindow(this, true);
@@ -231,6 +245,9 @@ public class Game extends JPanel implements ActionListener, KeyListener {
 
         for (int i = 0; i < 6; i++)
             Arrays.fill(colours[i], 0);
+
+        for (char c = 'a'; c <= 'z'; c++)
+            VirtualKeyboard.buttons.get(c-'a').setBackground(new Color(0x818384));
 
         row = 0;
         col = 0;
