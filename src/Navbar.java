@@ -1,18 +1,41 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 
-public class Navbar extends JPanel {
+public class Navbar extends JPanel implements ActionListener {
     public static final int width = 600;
     public static final int height = 80;
+    private final JButton helpBtn;
+    private HelpWindow helpWindow;
 
     public Navbar() {
         this.setBackground(new Color(0x121213));
         this.setPreferredSize(new Dimension(width, height));
         this.setDoubleBuffered(true); // reduced lag on animations in JPanel
+
+        // create JButton with icon only (no button decorations)
+        // kind of like an <a href="..."><img src="..." height=30></a> in HTML
+        ImageIcon helpIcon = new ImageIcon(getClass().getResource("help.png"));
+        helpBtn = new JButton();
+        helpBtn.setPreferredSize(new Dimension(25, 25));
+        helpBtn.setFocusable(false);
+        helpBtn.setFocusPainted(false);
+        helpBtn.setBorder(null);
+        helpBtn.setBorderPainted(false);
+        helpBtn.setMargin(new Insets(0, 0, 0, 0));
+        helpBtn.setContentAreaFilled(false);
+        helpBtn.setIcon(helpIcon);
+        helpBtn.addActionListener(this);
+
+        this.setBorder(new EmptyBorder(5, 5, 5, 5));
+        this.setLayout(new BorderLayout());
+        this.add(helpBtn, BorderLayout.LINE_END);
     }
 
     @Override
@@ -42,5 +65,14 @@ public class Navbar extends JPanel {
             throw new RuntimeException(e);
         }
         return img;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource().equals(helpBtn)) {
+            if (helpWindow == null || !helpWindow.isDisplayable()) {
+                helpWindow = new HelpWindow();
+            }
+        }
     }
 }
