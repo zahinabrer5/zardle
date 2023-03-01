@@ -1,7 +1,11 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -30,6 +34,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     private int pointsTotal = 6;
     private int wins = 0;
     private int losses = 0;
+    private int[] tries = new int[6];
 
     public Game() {
         this.setBackground(themeColours[0]);
@@ -234,12 +239,47 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             }
         }
         points++;
-        System.out.println("Points: "+points+"/"+pointsTotal);
+        System.out.println("Points:\t\t"+points+"/"+pointsTotal);
         if (word.equals(enteredWord)) {
             new PlayAgainWindow(this, true);
             disabled = true;
             wins++;
-            System.out.println("Wins: "+wins+", Losses: "+losses+", W/L Ratio: "+(double)wins/losses);
+            printWinLossRatio();
+            tries[row]++;
+            String json = String.format("""
+                    https://quickchart.io/chart?c={
+                      type: 'bar',
+                      data: {
+                        labels: [1, 2, 3, 4, 5, 6],
+                        datasets: [{
+                          label: 'Frequency of Number of Tries',
+                          data: [%d, %d, %d, %d, %d, %d]
+                        }]
+                      },
+                      options: {
+                        title: {
+                          display: true,
+                          text: 'Distribution of Number of Tries (until win)'
+                        },
+                        scales: {
+                          yAxes: [{
+                            ticks: {
+                              beginAtZero: true,
+                              stepSize: 1,
+                            }
+                          }]
+                        }
+                      }
+                    }""", tries[0], tries[1], tries[2], tries[3], tries[4], tries[5]);
+            json = json.replaceAll("\\s+","");
+            try {
+                URL url = new URL(json);
+                BufferedImage img = ImageIO.read(url);
+                File file = new File("graph.png");
+                ImageIO.write(img, "png", file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             return;
         }
         col = 0;
@@ -247,8 +287,17 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             new PlayAgainWindow(this, false);
             disabled = true;
             losses++;
-            System.out.println("Wins: "+wins+", Losses: "+losses+", W/L Ratio: "+(double)wins/losses);
+            printWinLossRatio();
         }
+    }
+
+    private void printWinLossRatio() {
+        String ratio = String.valueOf((double)wins/losses);
+        if (losses == 0)
+            ratio = "--";
+        System.out.println("Wins:\t\t"+wins+
+                "\nLosses:\t\t"+losses+
+                "\nW/L Ratio:\t"+ratio);
     }
 
     public void reset() {
