@@ -17,6 +17,7 @@ public class PlayAgainWindow extends JFrame implements ActionListener {
         String msg = (won ? "Congratulations! You won!!!!" :
                 "You lost!!!! :((((") + " Play again?";
         JLabel msgLabel = new JLabel(msg);
+        msgLabel.setForeground(Color.white);
 
         this.playAgainBtn = new JButton("Play Again! :D");
         playAgainBtn.addActionListener(this);
@@ -26,9 +27,11 @@ public class PlayAgainWindow extends JFrame implements ActionListener {
         JPanel btnPanel = new JPanel();
         btnPanel.add(playAgainBtn);
         btnPanel.add(exitBtn);
+        btnPanel.setBackground(Game.themeColours[0]);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setPreferredSize(new Dimension(300, 150));
+        mainPanel.setBackground(Game.themeColours[0]);
         mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;

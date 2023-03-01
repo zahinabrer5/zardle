@@ -13,7 +13,7 @@ public class VirtualKeyboard extends JPanel {
 
     public VirtualKeyboard(Game game) {
         this.game = game;
-        this.setBackground(Game.themeColours.get(0));
+        this.setBackground(Game.themeColours[0]);
         this.setPreferredSize(new Dimension(width, height));
         this.setDoubleBuffered(true); // reduced lag on animations in JPanel
 

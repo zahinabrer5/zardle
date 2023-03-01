@@ -15,7 +15,7 @@ public class Navbar extends JPanel implements ActionListener {
     private HelpWindow helpWindow;
 
     public Navbar() {
-        this.setBackground(new Color(0x121213));
+        this.setBackground(Game.themeColours[0]);
         this.setPreferredSize(new Dimension(width, height));
         this.setDoubleBuffered(true); // reduced lag on animations in JPanel
 

@@ -20,7 +20,7 @@ public class HelpWindow extends JFrame {
             throw new RuntimeException(e);
         }
         jep.setFocusable(false);
-        jep.setBackground(new Color(0x121213));
+        jep.setBackground(Game.themeColours[0]);
 
         JScrollPane scrollPane = new JScrollPane(jep);
         scrollPane.setBorder(null);

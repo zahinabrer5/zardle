@@ -14,7 +14,8 @@ import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        // enable OpenGL on Linux and Windows
+        // the following line enable OpenGL on Linux and Windows
+        // it causes glitches in repl.it for some reason
         System.setProperty("sun.java2d.opengl", "true");
 
         try {
