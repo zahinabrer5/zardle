@@ -24,6 +24,7 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-        new Window();
+//        new Window();
+        new StatsWindow();
     }
 }

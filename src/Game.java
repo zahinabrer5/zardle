@@ -30,11 +30,11 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             new Color(0xB59F3B),
             new Color(0x538D4E)
     };
-    private int points = 0;
-    private int pointsTotal = 6;
-    private int wins = 0;
-    private int losses = 0;
-    private int[] tries = new int[6];
+    public static int points = 0;
+    public static int pointsTotal = 6;
+    public static int wins = 0;
+    public static int losses = 0;
+    public static int[] tries = new int[6];
 
     public Game() {
         this.setBackground(themeColours[0]);
@@ -246,6 +246,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             wins++;
             printWinLossRatio();
             tries[row]++;
+            /*
             String json = String.format("""
                     https://quickchart.io/chart?c={
                       type: 'bar',
@@ -280,6 +281,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            */
             return;
         }
         col = 0;
