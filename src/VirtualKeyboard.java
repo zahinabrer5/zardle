@@ -32,7 +32,7 @@ public class VirtualKeyboard extends JPanel {
     private void keyboardBtnFactory(String text, boolean special) {
         JButton btn = new JButton(text);
         btn.setPreferredSize(new Dimension(special ? 70 : 50, 50));
-        btn.setFont(new WFont(20));
+        btn.setFont(new ZFont(20));
         btn.setForeground(Color.WHITE);
         btn.setBackground(new Color(0x818384));
         btn.setFocusable(false);

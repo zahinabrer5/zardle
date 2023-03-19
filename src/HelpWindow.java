@@ -7,7 +7,7 @@ public class HelpWindow extends JFrame {
     final int height = 600;
 
     public HelpWindow() {
-        this.setTitle("How to Play Wardle");
+        this.setTitle("How to Play Zardle");
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
 

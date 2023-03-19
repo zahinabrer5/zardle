@@ -1,19 +1,15 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 public class StatsWindow extends JFrame {
     public StatsWindow() {
-        this.setTitle("Your Statistics");
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("Your Statistics (as of "+currentTime()+")");
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setResizable(false);
 
         JPanel statsPanel = new JPanel();
@@ -26,12 +22,13 @@ public class StatsWindow extends JFrame {
                 String.valueOf((double)Game.wins/Game.losses);
         String[][] data = {
                 { "Points", Game.points+"/"+Game.pointsTotal },
+                { "Points (current game)", Game.currPoints+"/6" },
                 { "Wins", String.valueOf(Game.wins) },
                 { "Losses", String.valueOf(Game.losses) },
                 { "W/L Ratio", ratio },
         };
 
-        Font dataFont = new WFont(20);
+        Font dataFont = new ZFont(14);
         for (String[] row : data) {
             JLabel key = new JLabel(row[0]);
             key.setForeground(Color.white);
@@ -52,7 +49,7 @@ public class StatsWindow extends JFrame {
         String triesGraphLink = "https://quickchart.io/chart?c={%20type:%20%27bar%27,%20data:%20{%20labels:%20[1,2,3,4,5,6],%20datasets:%20[{%20label:%20%27Frequency%20of%20Number%20of%20Tries%27,%20data:%20"+
                 triesData+"%20}]%20},%20options:%20{%20title:%20{%20display:%20true,%20text:%20%27Distribution%20of%20Number%20of%20Tries%20(until%20win)%27%20},%20scales:%20{%20yAxes:%20[{%20ticks:%20{%20beginAtZero:%20true,%20stepSize:%201,%20}%20}]%20}%20}%20}";
         JButton triesGraphBtn = new JButton("Copy Link to Tries Distribution");
-        triesGraphBtn.setFont(new WFont(14));
+        triesGraphBtn.setFont(new ZFont(14));
         triesGraphBtn.addActionListener(e -> {
             copyToClipboard(triesGraphLink);
         });
@@ -72,12 +69,18 @@ public class StatsWindow extends JFrame {
         this.setVisible(true);
     }
 
+    private String currentTime() {
+        LocalDateTime time = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm:ss");
+        return time.format(dtf);
+    }
+
     // https://stackoverflow.com/a/46353370
-    private void copyToClipboard(String triesGraphLink) {
+    public static void copyToClipboard(String text) {
         Toolkit.getDefaultToolkit()
                 .getSystemClipboard()
                 .setContents(
-                        new StringSelection(triesGraphLink),
+                        new StringSelection(text),
                         null
                 );
     }

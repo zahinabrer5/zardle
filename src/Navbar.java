@@ -11,6 +11,7 @@ import java.net.URL;
 public class Navbar extends JPanel implements ActionListener {
     public static final int width = 600;
     public static final int height = 80;
+    private final JButton statsBtn;
     private final JButton helpBtn;
     private HelpWindow helpWindow;
 
@@ -19,23 +20,31 @@ public class Navbar extends JPanel implements ActionListener {
         this.setPreferredSize(new Dimension(width, height));
         this.setDoubleBuffered(true); // reduced lag on animations in JPanel
 
-        // create JButton with icon only (no button decorations)
-        // kind of like an <a href="..."><img src="..." height=30></a> in HTML
-        ImageIcon helpIcon = new ImageIcon(getClass().getResource("help.png"));
-        helpBtn = new JButton();
-        helpBtn.setPreferredSize(new Dimension(25, 25));
-        helpBtn.setFocusable(false);
-        helpBtn.setFocusPainted(false);
-        helpBtn.setBorder(null);
-        helpBtn.setBorderPainted(false);
-        helpBtn.setMargin(new Insets(0, 0, 0, 0));
-        helpBtn.setContentAreaFilled(false);
-        helpBtn.setIcon(helpIcon);
+        statsBtn = iconOnlyBtn("stats.png", 25, 25);
+        statsBtn.addActionListener(this);
+
+        helpBtn = iconOnlyBtn("help.png", 25, 25);
         helpBtn.addActionListener(this);
 
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
         this.setLayout(new BorderLayout());
+        this.add(statsBtn, BorderLayout.LINE_START);
         this.add(helpBtn, BorderLayout.LINE_END);
+    }
+
+    // create JButton with icon only (no button decorations)
+    // kind of like an <a href="..."><img src="..." height=30></a> in HTML
+    private JButton iconOnlyBtn(String iconFile, int width, int height) {
+        ImageIcon icon = new ImageIcon(getClass().getResource(iconFile));
+        JButton btn = new JButton();
+        btn.setPreferredSize(new Dimension(width, height));
+        btn.setFocusable(false);
+        btn.setFocusPainted(false);
+        btn.setBorder(null);
+        btn.setBorderPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setIcon(icon);
+        return btn;
     }
 
     @Override
@@ -69,7 +78,10 @@ public class Navbar extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(helpBtn)) {
+        if (e.getSource().equals(statsBtn)) {
+            new StatsWindow();
+        }
+        else if (e.getSource().equals(helpBtn)) {
             if (helpWindow == null) {
                 helpWindow = new HelpWindow();
             }

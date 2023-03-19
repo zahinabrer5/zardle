@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Window extends JFrame {
     public Window() {
-        this.setTitle("Wardle");
+        this.setTitle("Zardle");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
 

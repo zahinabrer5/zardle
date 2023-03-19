@@ -1,4 +1,4 @@
-# wardle
+# zardle
 Wordle game assignment for ICS3U
 
 ## Attributions

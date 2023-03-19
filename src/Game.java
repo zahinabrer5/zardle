@@ -1,11 +1,7 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
@@ -15,7 +11,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     public static final int width = 600;
     public static final int height = 700-VirtualKeyboard.height-Navbar.height;
     private final char[][] letters = new char[6][5];
-    private final int[][] colours = new int[6][5];
+    public final int[][] colours = new int[6][5];
     private int row = 0;
     private int col = 0;
     private String alert = "";
@@ -23,6 +19,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     private final List<String> used = new ArrayList<>();
     private final Random rand = new Random();
     private String word = getRandomWord(words, used, rand);
+//    private String word = "blame";
     private boolean disabled = false;
     public static final Color[] themeColours = {
             new Color(0x121213),
@@ -31,6 +28,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             new Color(0x538D4E)
     };
     public static int points = 0;
+    public static int currPoints = 0;
     public static int pointsTotal = 6;
     public static int wins = 0;
     public static int losses = 0;
@@ -114,7 +112,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     private void drawAlert(Graphics2D g2) {
         Rectangle rect = new Rectangle(0, 0, 600, 40);
         g2.setColor(Color.red);
-        drawCenteredString(g2, alert, rect, new WFont(15));
+        drawCenteredString(g2, alert, rect, new ZFont(15));
         alert = "";
     }
 
@@ -128,7 +126,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
                 g2.fillRect(x, y, 60, 60);
                 g2.setColor(Color.white);
                 Rectangle rect = new Rectangle(x, y, 60, 60);
-                drawCenteredString(g2, String.valueOf(letters[i][j]), rect, new WFont(30));
+                drawCenteredString(g2, String.valueOf(letters[i][j]), rect, new ZFont(30));
             }
         }
     }
@@ -239,6 +237,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             }
         }
         points++;
+        currPoints++;
         System.out.println("Points:\t\t"+points+"/"+pointsTotal);
         if (word.equals(enteredWord)) {
             new PlayAgainWindow(this, true);
@@ -246,42 +245,6 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             wins++;
             printWinLossRatio();
             tries[row]++;
-            /*
-            String json = String.format("""
-                    https://quickchart.io/chart?c={
-                      type: 'bar',
-                      data: {
-                        labels: [1, 2, 3, 4, 5, 6],
-                        datasets: [{
-                          label: 'Frequency of Number of Tries',
-                          data: [%d, %d, %d, %d, %d, %d]
-                        }]
-                      },
-                      options: {
-                        title: {
-                          display: true,
-                          text: 'Distribution of Number of Tries (until win)'
-                        },
-                        scales: {
-                          yAxes: [{
-                            ticks: {
-                              beginAtZero: true,
-                              stepSize: 1,
-                            }
-                          }]
-                        }
-                      }
-                    }""", tries[0], tries[1], tries[2], tries[3], tries[4], tries[5]);
-            json = json.replaceAll("\\s+","");
-            try {
-                URL url = new URL(json);
-                BufferedImage img = ImageIO.read(url);
-                File file = new File("graph.png");
-                ImageIO.write(img, "png", file);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            */
             return;
         }
         col = 0;
@@ -317,6 +280,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
         word = getRandomWord(words, used, rand);
         disabled = false;
         pointsTotal += 6;
+        currPoints = 0;
         repaint();
 
         System.out.println(word);
