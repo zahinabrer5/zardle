@@ -8,7 +8,7 @@ public class PlayAgainWindow extends JFrame implements ActionListener {
     private final JButton exitBtn;
     private final JButton shareBtn;
     private final Game game;
-    private boolean won;
+    private final boolean won;
 
     public PlayAgainWindow(Game game, boolean won) {
         this.setTitle("Play Again?");

@@ -71,7 +71,7 @@ public class StatsWindow extends JFrame {
 
     private String currentTime() {
         LocalDateTime time = LocalDateTime.now();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yy-MM-dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return time.format(dtf);
     }
 

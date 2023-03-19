@@ -59,8 +59,9 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     // https://stackoverflow.com/questions/5868369/how-can-i-read-a-large-text-file-line-by-line-using-java
     private List<String> loadWords() {
         List<String> res = new ArrayList<>();
+        String file = Main.hard ? "words_hard.txt" : "words.txt";
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                getClass().getResourceAsStream("words.txt")))) {
+                getClass().getResourceAsStream(file)))) {
             for (String line; (line = br.readLine()) != null; ) {
                 res.add(line);
             }

@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Scanner;
 
 /**
  * <strong><u>Wordle Game Assignment</u></strong>
@@ -13,17 +14,29 @@ import javax.swing.*;
  */
 
 public class Main {
-    public static void main(String[] args) {
+    static boolean hard;
+
+    public static void main(String[] args) throws Exception {
         // the following line enable OpenGL on Linux and Windows
         // it causes glitches in repl.it for some reason
         System.setProperty("sun.java2d.opengl", "true");
 
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("""
+                Welcome to Zardle!
+                ----------------------------------------
+                
+                Please respond to the following prompt to select whether or not you'd
+                like to play the game in hard mode. Hard mode includes a larger word
+                list and includes more uncommon or rare words.
+                """);
+        System.out.print("Run as hard mode? Enter Y/y for yes or anything else for no: ");
+        hard = sc.nextLine().equalsIgnoreCase("y");
+        System.out.println("\nA GUI should appear in about 2 seconds... ");
+        System.out.println("Click the question mark icon in the GUI to see rules!!!!");
+        Thread.sleep(2000);
         new Window();
     }
 }
