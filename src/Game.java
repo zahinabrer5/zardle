@@ -19,7 +19,6 @@ public class Game extends JPanel implements ActionListener, KeyListener {
     private final List<String> used = new ArrayList<>();
     private final Random rand = new Random();
     private String word = getRandomWord(words, used, rand);
-//    private String word = "blame";
     private boolean disabled = false;
     public static final Color[] themeColours = {
             new Color(0x121213),
@@ -212,31 +211,44 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             alert = "Write more letters!!!!";
             return;
         }
+
         String enteredWord = new String(letters[row]).toLowerCase();
+
         if (!words.contains(enteredWord)) {
             alert = "Word not in list!!!!";
             return;
         }
+
+        StringBuilder sb = new StringBuilder(word);
         for (int i = 0; i < 5; i++) {
             char letter = Character.toLowerCase(letters[row][i]);
-            JButton btn = VirtualKeyboard.buttons.get(letter-'a');
-            int idx = Arrays.asList(themeColours).indexOf(btn.getBackground());
-            if (word.indexOf(letter) == -1) {
-                colours[row][i] = 1;
-                if (idx < 1)
-                    btn.setBackground(themeColours[1]);
-            }
-            if (word.indexOf(letter) > -1) {
-                colours[row][i] = 2;
-                if (idx < 2)
-                    btn.setBackground(themeColours[2]);
-            }
             if (word.charAt(i) == letter) {
                 colours[row][i] = 3;
-                if (idx < 3)
-                    btn.setBackground(themeColours[3]);
+                JButton btn = VirtualKeyboard.buttons.get(letter-'a');
+                btn.setBackground(themeColours[3]);
+                sb.setCharAt(i, ' ');
             }
         }
+        for (int i = 0; i < 5; i++) {
+            if (colours[row][i] == 0) {
+                char letter = Character.toLowerCase(letters[row][i]);
+                JButton btn = VirtualKeyboard.buttons.get(letter-'a');
+                int idx = Arrays.asList(themeColours).indexOf(btn.getBackground());
+                int sbIdx = sb.indexOf(String.valueOf(letter));
+                if (sbIdx > -1) {
+                    colours[row][i] = 2;
+                    if (idx < 2)
+                        btn.setBackground(themeColours[2]);
+                    sb.setCharAt(sbIdx, ' ');
+                }
+                else {
+                    colours[row][i] = 1;
+                    if (idx < 1)
+                        btn.setBackground(themeColours[1]);
+                }
+            }
+        }
+
         points++;
         currPoints++;
         System.out.println("Points:\t\t"+points+"/"+pointsTotal);
@@ -248,6 +260,7 @@ public class Game extends JPanel implements ActionListener, KeyListener {
             tries[row]++;
             return;
         }
+
         col = 0;
         if (++row == 6) {
             new PlayAgainWindow(this, false);

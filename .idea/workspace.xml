@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ee31fe83-e93d-4352-b847-68af20dfc69c" name="Changes" comment="avoid tofu by initially filling letters grid with spaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/words.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resources/words_hard.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/help_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/help_page.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayAgainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayAgainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StatsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StatsWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -122,7 +120,7 @@
       <workItem from="1678027849001" duration="6137000" />
       <workItem from="1678835388245" duration="1593000" />
       <workItem from="1679253760212" duration="506000" />
-      <workItem from="1679254453975" duration="11456000" />
+      <workItem from="1679254453975" duration="24255000" />
     </task>
     <task id="LOCAL-00001" summary="avoid tofu by initially filling letters grid with spaces">
       <created>1676982999739</created>

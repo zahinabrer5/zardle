@@ -34,9 +34,10 @@ public class Main {
                 """);
         System.out.print("Run as hard mode? Enter Y/y for yes or anything else for no: ");
         hard = sc.nextLine().equalsIgnoreCase("y");
-        System.out.println("\nA GUI should appear in about 2 seconds... ");
-        System.out.println("Click the question mark icon in the GUI to see rules!!!!");
-        Thread.sleep(2000);
+        System.out.println("\nA GUI should appear in about 3 seconds... ");
+        System.out.println("**Click the question mark icon in the GUI to see rules!!!!**");
+        System.out.println("Good Luck!!!!");
+        Thread.sleep(3000);
         new Window();
     }
 }
