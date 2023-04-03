@@ -6,9 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="ee31fe83-e93d-4352-b847-68af20dfc69c" name="Changes" comment="avoid tofu by initially filling letters grid with spaces">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/help_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/resources/help_page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HelpWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Navbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Navbar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PlayAgainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayAgainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/VirtualKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OnScreenKeyboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,25 +48,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/zahin/IdeaProjects/Zardle/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/zahin/IdeaProjects/Zardle/resources&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources" />
@@ -120,7 +125,9 @@
       <workItem from="1678027849001" duration="6137000" />
       <workItem from="1678835388245" duration="1593000" />
       <workItem from="1679253760212" duration="506000" />
-      <workItem from="1679254453975" duration="24255000" />
+      <workItem from="1679254453975" duration="26151000" />
+      <workItem from="1679439839567" duration="690000" />
+      <workItem from="1680490757561" duration="10302000" />
     </task>
     <task id="LOCAL-00001" summary="avoid tofu by initially filling letters grid with spaces">
       <created>1676982999739</created>

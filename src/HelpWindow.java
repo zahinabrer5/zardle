@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
 public class HelpWindow extends JFrame {
@@ -8,9 +7,14 @@ public class HelpWindow extends JFrame {
 
     public HelpWindow() {
         this.setTitle("How to Play Zardle");
+        // hide window instead of disposing
         this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         this.setResizable(false);
 
+        // use JEditorPane to render & display HTML file
+        // it usually takes a long while to render the HTML
+        // when the HelpWindow object is created and I don't
+        // know how to make it load faster
         JEditorPane jep = new JEditorPane();
         jep.setEditable(false);
         jep.setContentType("text/html");
@@ -22,9 +26,13 @@ public class HelpWindow extends JFrame {
         jep.setFocusable(false);
         jep.setBackground(Game.themeColours[0]);
 
+        // a JScrollPane object must be created using the
+        // JEditorPane object, but since we don't want a
+        // scrollbar, we disable the border
         JScrollPane scrollPane = new JScrollPane(jep);
         scrollPane.setBorder(null);
         scrollPane.setViewportBorder(null);
+
         this.getContentPane().add(scrollPane);
         this.setSize(width, height);
 

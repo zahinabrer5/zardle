@@ -13,6 +13,10 @@ public class Navbar extends JPanel implements ActionListener {
     public static final int height = 80;
     private final JButton statsBtn;
     private final JButton helpBtn;
+
+    // only one HelpWindow instance is needed so HTML
+    // has to be loaded only once
+    // just hide & unhide the window afterwards
     private HelpWindow helpWindow;
 
     public Navbar() {
@@ -27,6 +31,8 @@ public class Navbar extends JPanel implements ActionListener {
         helpBtn.addActionListener(this);
 
         this.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+        // use BorderLayout to arrange buttons horizontally
         this.setLayout(new BorderLayout());
         this.add(statsBtn, BorderLayout.LINE_START);
         this.add(helpBtn, BorderLayout.LINE_END);
@@ -82,10 +88,13 @@ public class Navbar extends JPanel implements ActionListener {
             new StatsWindow();
         }
         else if (e.getSource().equals(helpBtn)) {
+            // if helpWindow has not been assigned...
             if (helpWindow == null) {
+                // create HelpWindow object, loading HTML
                 helpWindow = new HelpWindow();
             }
             else if (!helpWindow.isVisible()) {
+                // otherwise just show the window
                 helpWindow.setVisible(true);
             }
         }

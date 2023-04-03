@@ -3,7 +3,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VirtualKeyboard extends JPanel {
+public class OnScreenKeyboard extends JPanel {
     public static final int width = 600;
     public static final int height = 175;
     private final int row = 4;
@@ -11,7 +11,7 @@ public class VirtualKeyboard extends JPanel {
     public static final List<JButton> buttons = new ArrayList<>();
     private final Game game;
 
-    public VirtualKeyboard(Game game) {
+    public OnScreenKeyboard(Game game) {
         this.game = game;
         this.setBackground(Game.themeColours[0]);
         this.setPreferredSize(new Dimension(width, height));
