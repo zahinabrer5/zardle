@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee31fe83-e93d-4352-b847-68af20dfc69c" name="Changes" comment="avoid tofu by initially filling letters grid with spaces">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HelpWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Navbar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Navbar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PlayAgainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PlayAgainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VirtualKeyboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OnScreenKeyboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
-    </list>
+    <list default="true" id="ee31fe83-e93d-4352-b847-68af20dfc69c" name="Changes" comment="avoid tofu by initially filling letters grid with spaces" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +117,7 @@
       <workItem from="1679253760212" duration="506000" />
       <workItem from="1679254453975" duration="26151000" />
       <workItem from="1679439839567" duration="690000" />
-      <workItem from="1680490757561" duration="10302000" />
+      <workItem from="1680490757561" duration="10715000" />
     </task>
     <task id="LOCAL-00001" summary="avoid tofu by initially filling letters grid with spaces">
       <created>1676982999739</created>
