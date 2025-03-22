@@ -21,6 +21,7 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         // the following line enables OpenGL on Linux and Windows
+        // it causes glitches on repl.it for some reason
         System.setProperty("sun.java2d.opengl", "true");
 
         UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -34,7 +35,11 @@ public class Main {
                 1. Correct letters in the correct position will be %sg%sreen.
                 2. Correct letters in the wrong position will be y%se%sllow.
                 3. Letters not in the  word will be dar%sk%s grey.
-                **Click the question mark icon in the GUI for more info!!!!**
+                
+                **Click the question mark icon in the GUI for more info!!!! However,
+                for some reason, the help window sometimes takes a while to open. It's
+                impossible to gain focus on the main window while the help window is
+                rendering the HTML, probably due to some weird Java Swing bug.**
                 
                 The game includes a GUI which accepts both keyboard input from your
                 physical keyboard and from the game's builtin on-screen keyboard.
@@ -50,6 +55,7 @@ public class Main {
 
         int waitTime = 3;
         System.out.println("\nA GUI should appear in about "+waitTime+" seconds... good luck!!!!");
+        System.out.println("Make sure there's an 'Output' window open if using repl.it");
         Thread.sleep(waitTime*1000);
         new Window();
     }
